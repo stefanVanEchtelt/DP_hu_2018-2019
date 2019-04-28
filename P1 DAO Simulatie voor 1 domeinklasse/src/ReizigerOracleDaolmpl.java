@@ -12,7 +12,7 @@ public class ReizigerOracleDaolmpl extends OracleBaseDao implements ReizigerDao 
 		List<Reiziger> GbReiziger = new ArrayList<Reiziger>();
 		for (Reiziger reiziger : this.reizigers) {
 			if (reiziger.getGBdatum() != null) {
-				if (reiziger.getGBdatum().toString().equals(GBdatum)) { // TODO check if tostringis good
+				if (reiziger.getGBdatum().toString().equals(GBdatum)) {
 					GbReiziger.add(reiziger);
 				}	
 			}
