@@ -20,12 +20,12 @@ public class Driver {
 				System.out.println(myRs.getString("CODE"));
 			}
 			
-			Statement myStmt2 = myConn.createStatement();
-			String createSql = "insert into CURSUSSEN "
-					+ " (CODE, OMSCHRIJVING, TYPE, LENGTE)"
-					+ " values ('XXX', 'Stefan', 'ALG', 4)";
-			
-			myStmt2.executeUpdate(createSql);
+//			Statement myStmt2 = myConn.createStatement();
+//			String createSql = "insert into CURSUSSEN "
+//					+ " (CODE, OMSCHRIJVING, TYPE, LENGTE)"
+//					+ " values ('XXX', 'Stefan', 'ALG', 4)";
+//			
+//			myStmt2.executeUpdate(createSql);
 			
 			System.out.println("complete");
 		}
