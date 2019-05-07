@@ -5,7 +5,19 @@ import java.text.SimpleDateFormat;
 public class Main {
 	public static void main(String[] args) {
 		try {
-			ReizigerOracleDaolmpl db = new ReizigerOracleDaolmpl();			
+			ReizigerOracleDaolmpl db = new ReizigerOracleDaolmpl();		
+			OvChipkaartOracleDaoLmpl dbo = new OvChipkaartOracleDaoLmpl();	
+			
+			OvChipkaart o1 = new OvChipkaart();
+			o1.setKaartNummer(1231234);
+			o1.setKlasse(1);
+			o1.setReizigerId(2);
+			o1.setSaldo(11.11);
+			dbo.save(o1);
+			
+			for (OvChipkaart ov : dbo.findByReiziger(2)) {
+				System.out.println(ov.getKaartNummer());
+			}
 			
 			Reiziger r1 = new Reiziger();
 			Reiziger r2 = new Reiziger();

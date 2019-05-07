@@ -4,7 +4,7 @@ public class OvChipkaart {
 	private int kaartNummer;
 	private Date geldigTot;
 	private int klasse;
-	private float saldo;
+	private double saldo;
 	private int reizigerId;
 	
 	public void setKaartNummer(int kaartnummer) {
@@ -31,11 +31,11 @@ public class OvChipkaart {
 		return this.klasse;
 	}
 	
-	public void setSaldo(float saldo) {
+	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
 	
-	public float getSaldo() {
+	public double getSaldo() {
 		return this.saldo;
 	}
 	
@@ -43,4 +43,7 @@ public class OvChipkaart {
 		this.reizigerId = reizigerId;
 	}
 	
+	public int getReizigerId() {
+		return this.reizigerId;
+	}
 }
