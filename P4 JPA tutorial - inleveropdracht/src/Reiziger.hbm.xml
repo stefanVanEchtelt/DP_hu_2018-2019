@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Generated May 10, 2019 9:02:58 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="hu.nl.hibernate.Reiziger" table="REIZIGER">
+		<id name="reizigerID" type="int" access="field">
+			<column name="REIZIGERID" />
+			<generator class="assigned" /> <!-- Google: generator classes in hibernate -->
+		</id>
+		<property name="voorl" type="java.lang.String" access="field">
+			<column name="VOORLETTERS" />
+		</property>
+		<property name="tussenvoegsel" type="java.lang.String">
+			<column name="TUSSENVOEGSEL" />
+		</property>
+		<property name="achternaam" type="java.lang.String">
+			<column name="ACHTERNAAM" />
+		</property>
+		<property name="gbdatum" type="java.util.Date" access="field">
+			<column name="GEBORTEDATUM" />
+		</property>
+	</class>
+</hibernate-mapping>
