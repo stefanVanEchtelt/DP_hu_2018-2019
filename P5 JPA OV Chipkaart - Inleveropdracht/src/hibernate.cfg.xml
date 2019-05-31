@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 5.4//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+	<property name="dialect">org.hibernate.dialect.OracleDialect</property> 
+	<property name="connection.url">jdbc:oracle:thin:@localhost:49161:xe</property> 
+	<property name="connection.username">OV</property> 
+	<property name="connection.password">Hallo123</property> 
+	<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property> 
+	<property name="default_schema">BART_PERS</property>
+	<property name="connection.OV">true</property>
+<!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
+        <property name="show_sql">false</property>
+
+        <!--    P4    -->
+<!--        <mapping resource="Log.hbm.xml"/>-->
+<!--        <mapping class="me.stefan.dphibernate.p4.Log2"/>-->
+
+        <!--    P5    -->
+        <mapping class="hu.nl.hibernate.Reiziger"/>
+        <mapping class="hu.nl.hibernate.OVChipkaart"/>
+    </session-factory>
+</hibernate-configuration> 
