@@ -69,6 +69,58 @@ public class ProductOracleDaoLmpl extends OracleBaseDao implements ProductDao {
 		return product;
 	}
 	
+	public Product findByProductNummer(int productNummer) {
+		Product producten = new Product();
+		
+		try {
+			Connection myConn = getConnection();
+			Statement stmt = myConn.createStatement();
+			String query = "SELECT * FROM product WHERE productNummer =" + productNummer;
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				Product mijnProduct = new Product();
+				mijnProduct.setBeschrijving(rs.getString("beschrijving"));
+				mijnProduct.setPrijs(rs.getDouble("prijs"));
+				mijnProduct.setProductNaam(rs.getString("productNaam"));
+				mijnProduct.setProductnummer(rs.getInt("productNummer"));
+				return mijnProduct;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return producten;
+	}
+	
+	public ArrayList<OvChipkaart> findOvChipkaartByProductNummer(int productNummer) {
+		ArrayList<OvChipkaart> alleKaarten = new ArrayList<OvChipkaart>();
+		
+		try {
+			Connection myConn = getConnection();
+			Statement stmt = myConn.createStatement();
+			String query = "SELECT kaartnummer FROM ov_chipkaart_product WHERE productNummer ="+ productNummer;
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next()) {
+				int kaartnummer = rs.getInt("kaartNummer");
+				Statement ovstmt = myConn.createStatement();
+				String ovQuery = "SELECT * FROM ov_chipkaart WHERE kaartNummer="+ kaartnummer;
+				ResultSet result = ovstmt.executeQuery(ovQuery);
+				while(result.next()) {
+					OvChipkaart ov = new OvChipkaart();
+					ov.setKaartNummer(kaartnummer);
+					ov.setKlasse(result.getInt("klasse"));
+					ov.setReizigerId(result.getInt("reizigerID"));
+					ov.setSaldo(result.getDouble("saldo"));
+					ov.setGeldigTot(result.getDate("geldigTot"));
+					ov.voegProductToe(this.findByProductNummer(productNummer));
+					alleKaarten.add(ov);
+				}
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return alleKaarten;
+	}
+	
 	public boolean delete(Product product) {
 		try {
 			Connection myConn = getConnection();
