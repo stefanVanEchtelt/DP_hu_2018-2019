@@ -93,6 +93,7 @@ public class ProductOracleDaoLmpl extends OracleBaseDao implements ProductDao {
 	
 	public ArrayList<OvChipkaart> findOvChipkaartByProductNummer(int productNummer) {
 		ArrayList<OvChipkaart> alleKaarten = new ArrayList<OvChipkaart>();
+		Product p = this.findByProductNummer(productNummer);
 		
 		try {
 			Connection myConn = getConnection();
@@ -111,13 +112,15 @@ public class ProductOracleDaoLmpl extends OracleBaseDao implements ProductDao {
 					ov.setReizigerId(result.getInt("reizigerID"));
 					ov.setSaldo(result.getDouble("saldo"));
 					ov.setGeldigTot(result.getDate("geldigTot"));
-					ov.voegProductToe(this.findByProductNummer(productNummer));
+					ov.voegProductToe(p);
+					p.voegOvToe(ov);
 					alleKaarten.add(ov);
 				}
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return alleKaarten;
 	}
 	

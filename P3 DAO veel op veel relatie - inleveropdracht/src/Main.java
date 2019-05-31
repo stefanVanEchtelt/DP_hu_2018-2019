@@ -75,6 +75,11 @@ public class Main {
 			
 			dbo.linkProduct(o1, product1);
 			
+			System.out.println("Alle kaarten die product 2 hebben");
+			for (OvChipkaart ov : dbp.findOvChipkaartByProductNummer(2)) {
+				System.out.println(ov);
+			}
+			
 			System.out.println("done");
 		} catch (ParseException e) {
 			e.printStackTrace();
