@@ -45,7 +45,7 @@ public class Main {
 
         if (true) {
             ConsoleColor.log("\n---- Create Reiziger with OVChipkaart", ConsoleColor.ANSI_BLUE);
-            reiziger = new Reiziger(6, "Bart", "den", "Hamer",
+            reiziger = new Reiziger(6, "Stefan", "van", "Echtelt",
                     Date.valueOf(new GregorianCalendar(2000, Calendar.FEBRUARY, 10)
                             .toInstant()
                             .atZone(ZoneId.systemDefault())
